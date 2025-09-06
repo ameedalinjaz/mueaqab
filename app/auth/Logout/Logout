@@ -1,0 +1,18 @@
+"use client"
+import { supabase } from "@/lib/supabaseClient"
+import { useRouter } from "next/navigation"
+
+export default function LogoutButton() {
+  const router = useRouter()
+
+  async function handleLogout() {
+    await supabase.auth.signOut()
+    router.push("/") // رجوع للصفحة الرئيسية
+  }
+
+  return (
+    <button onClick={handleLogout} className="bg-red-500 text-white p-2 rounded">
+      تسجيل الخروج
+    </button>
+  )
+}
